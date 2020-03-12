@@ -1,0 +1,53 @@
+<h1>Magasin.com</h1>
+
+<h3>Produits :</h3>
+
+  <% if flash[:success] %>
+    <div class="notice"><%= flash[:success] %></div>
+  <% end %>
+
+  <% if flash[:error] %>
+    <%= flash[:error] %></div>
+  <% end %>
+
+<div>
+<ul>
+    <% @products.each do |item| %>
+      <li>
+        <%= link_to item.name, item_path(item) %>
+      </li>
+    <% end %>
+</ul>
+</div>
+
+  <% if user_signed_in? %>
+   
+   <li>
+      <%= link_to "Votre panier", paniers_path, method: :get %>
+    </li>
+
+    <li>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </li>
+
+
+    <li>
+      Voici ton email : <%= current_user.email %>
+    </li>
+
+    <li>
+      <%= link_to "Edit email / password", edit_user_registration_path %>
+    </li>
+
+  <% else %>
+    <li>    
+      <%= link_to "Sign in", new_user_session_path %>
+    </li>
+
+    <li>
+      <%= link_to "Sign up", new_user_registration_path %>
+    </li>
+
+  <% end %>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><font color="grey">Je sais que c'est moche.</font>

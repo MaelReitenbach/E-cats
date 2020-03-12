@@ -1,0 +1,29 @@
+<h1>
+	<%= @item.name %>
+</h1>
+
+<h4>
+	<%= @item.description %>
+</h4>
+
+<% if user_signed_in? %>
+
+	<%= form_tag(paniers_path, :action => "create", :method => "post") do %>
+		<%= hidden_field_tag :item_id, @item.id %>
+		<%= number_field_tag :quantity, "1", within: 1...20 %>
+		<%= submit_tag "Ajouter au panier" %>
+	<% end %>
+
+
+    <li>
+      <%= link_to "Acheter", paniers_path, method: :new %>
+    </li>
+
+  <% else %>
+
+    <li>    
+      <%= link_to "Pour acheter veuillez vous connecter", new_user_session_path %>
+    </li>
+
+
+  <% end %>

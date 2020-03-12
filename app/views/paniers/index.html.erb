@@ -1,0 +1,14 @@
+<h2>Votre panier</h2>
+
+<div>
+<ul>
+    <% @cart.each do |item| %>
+      <li>
+        <%= link_to item.name, item_path(item) %>
+      <br><br>
+      </li>
+    <% end %>
+
+    <%= link_to "Supprimer votre panier", users_path %>
+</ul>
+</div>
